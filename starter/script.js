@@ -181,3 +181,61 @@ console.log(eurowings);
 
 reserveSeat.apply(lufthansa, [555, "Lucky Start"]);
 console.log(lufthansa);
+
+const reserveSeatOnEurowings = reserveSeat.bind(eurowings);
+reserveSeatOnEurowings(77, "Winner");
+console.log(eurowings);
+
+reserveSeat.call(lufthansa, 984, "Dan Smith");
+console.log(lufthansa);
+
+reserveSeatOnEurowings(384, "Dave Jones");
+console.log(eurowings);
+
+const reserveSeatOnEurowings99 = reserveSeat.bind(eurowings, 99);
+console.log(reserveSeatOnEurowings99);
+
+reserveSeatOnEurowings99("Michael Jordan");
+
+const reserveSeatOnSwiss888 = reserveSeat.bind(swiss, 888);
+reserveSeatOnSwiss888("Donald Trump");
+console.log(swiss);
+
+console.log(reserveSeat.bind(lufthansa, 999));
+
+lufthansa.plane = 300;
+lufthansa.buyPlane = function () {
+    console.log(this);
+  this.plane++;
+    console.log(this.plane);
+}
+
+console.log(document.querySelector(".buy"));
+
+document.querySelector(".buy").addEventListener("click", lufthansa.buyPlane.bind(lufthansa));
+// document.querySelector(".buy").addEventListener("click", lufthansa.buyPlane);
+
+console.log(lufthansa);
+
+
+// console.log(addTax(0.1, 200));
+
+// const addVAT = addTax.bind(null, 0.2);
+// console.log(addVAT(100));
+
+// const addTax = (rate, value) => value + value * rate;
+const addTax = function (rate) {
+  console.log(rate)
+  return (
+    function (value) {
+      return (value + value * rate);
+    }  
+  )
+};
+
+const addVAT2 = addTax(0.25);
+console.log(addVAT2);
+console.log(addVAT2(100));
+
+
+
